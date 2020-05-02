@@ -1,0 +1,41 @@
+{% extends "library/layout.html" %}
+
+{% block body %}
+
+    <h2>
+        {{ listing.title }}
+    </h2>
+    {% if on_loan %}
+        <div>
+            <span class="badge badge-secondary">Loan</span>
+        </div>
+    {% endif %}
+
+    {% if listing.image_url %}
+        <div id="img">
+            <img src="{{ listing.image_url }}" alt="{{ listing.title }}">
+        </div>
+    {% endif %}
+
+    <p>
+        {{ listing.description }}
+    </p>
+
+    <!-- borrow -->
+    {% if user.is_authenticated %}
+        {% if on_loan %}
+            <form action="{% url 'loan_delete' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                <input class="btn btn-sm btn-secondary" type="submit" value="Return Book">
+        </form>
+    {% else %}
+        <form action="{% url 'loan_add' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="listing_id" value="{{ listing.id }}">
+            <input class="btn btn-sm btn-secondary" type="submit" value="Borrow Book">
+        </form>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

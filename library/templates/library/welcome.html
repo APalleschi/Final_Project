@@ -1,0 +1,20 @@
+{% load static %}
+
+    <body>
+        <div class="typewriter">
+            <h1>Welcome to the Hogwarts Library!</h1>
+        </div>
+        <div class="container">
+            <img src="https://i.ytimg.com/vi/HsD__RCMOXE/maxresdefault.jpg" style="width:100%">
+            <a href="index">
+            <button id="enter" button class="btn">Enter Library</button></a>
+        </div>
+    
+
+{% block script %}
+<script src="{% static 'library/magic.js' %}"></script>
+<link href="{% static 'library/styles.css' %}" rel="stylesheet">
+{% endblock %}
+      
+    </body>
+</html>

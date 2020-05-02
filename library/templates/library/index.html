@@ -1,0 +1,40 @@
+{% extends "library/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+
+    {% for listing in listings %}
+        <div class="card mb-12">
+            <a href="{% url 'listing' listing.id %}">
+                <div class="row no-gutters">
+                    {% if listing.image_url %}
+                        <div class="col-md-4">
+                            <img src="{{ listing.image_url }}" class="card-img" alt="{{ listing.title }}">
+                        </div>
+                        <div class="col-md-8">
+                    {% else %}
+                        <div class="col-md-12">
+                    {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ listing.title }}
+                                </h5>
+                                {% if listing.section %}
+                                    <p class="card-text"><strong>section:</strong> {{ listing.section }}</p>
+                                {% endif %}
+                                <p class="card-text">{{ listing.description }}</p>
+                                <button id="loan" button type="button" class="btn btn-light">View Summary</button>
+                            </div>
+                        </div>
+                </div>
+            </a>
+        </div>
+ 
+    {% endfor %}
+    {% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'library/magic.js' %}"></script>
+{% endblock %}

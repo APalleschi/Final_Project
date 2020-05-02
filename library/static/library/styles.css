@@ -1,0 +1,108 @@
+* {cursor: url(http://cur.cursors-4u.net/user/use-1/use160.cur), auto !important;
+}
+
+body {
+  background-color: black;
+  padding: 10px;
+  color: white;
+}
+
+.card > a {
+  text-decoration: none;
+  color: white;
+}
+
+.card{
+  background-color: black;
+}
+
+.nav ul {
+  list-style: none;
+  text-align: center;
+}
+/* these two dont work */
+.nav ul li {  
+  display: inline-block;
+}
+.nav-link{
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Oswald", Helvetica Neue;
+  font-size: 72px;
+  font-size: 36px;
+  color: white;
+  margin-left: 10%;
+}
+
+#logo {
+  text-align: center;
+}
+
+.card-img {
+  height: 250px;
+  object-fit: contain;
+}
+
+.card mb-3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img {
+  text-align: center;
+  display: block;
+}
+
+  .container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  }
+
+  .container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  }
+
+  .container .btn:hover {
+  background-color: black;
+  }
+
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}
+

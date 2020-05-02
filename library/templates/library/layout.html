@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}library{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'library/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'library/magic.js' %}" rel="js">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Julius+Sans+One|Oswald" rel="stylesheet">
+    </head>
+    <body>
+        <div class="typewriter">
+        <h1>Welcome to the Hogwarts Library!</h1>
+    </div>
+        
+        <div class="img">
+            <img src="https://www.freepnglogos.com/uploads/hogwarts-logo-png/hhogwarts-logo-ome-hufflepuff-house-homepage-crest-building-4.png"></div>
+        <div>
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Browse Shelves</a>
+            </li>
+    
+            <li class="nav-item"> <li id="restricted">
+                <a class="nav-link" href="{% url 'restricted' %}"> Restricted Section</a>
+            </li></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sections' %}"> Browse Sections</a>
+            </li>
+            {% if user.is_authenticated %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loan' %}">
+                        Loans
+                        {% if request.user.loan.count > 0 %}
+                            <span class="badge badge-secondary">{{ request.user.loan.count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">Add Book to Library</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+        <hr>
+        {% block body %}
+        {% endblock %}
+
+{% block script %}
+<script src="{% static 'library/magic.js' %}"></script>
+{% endblock %}
+      
+    </body>
+</html>
